@@ -7,32 +7,62 @@ export default function App() {
   const [quote, setQuote] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // async function loadRandomQuote(category = null) {
+  //   setLoading(true);
+
+  //   const { data, errors } = await client.models.Quote.list({
+  //     filter: category ? { category: { eq: category } } : undefined,
+  //     limit: 200,
+  //   });
+
+  //   if (errors?.length) {
+  //     console.error(errors);
+  //     setQuote({ text: "Failed to load quotes.", author: "" });
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   const items = data ?? [];
+  //   if (!items.length) {
+  //     setQuote({ text: "No quotes yet. Add some to DynamoDB!", author: "" });
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   const pick = items[Math.floor(Math.random() * items.length)];
+  //   setQuote({ text: pick.text, author: pick.author || "Unknown", category: pick.category || "" });
+  //   setLoading(false);
+  // }
+
   async function loadRandomQuote(category = null) {
     setLoading(true);
 
-    const { data, errors } = await client.models.Quote.list({
-      filter: category ? { category: { eq: category } } : undefined,
-      limit: 200,
-    });
+    try {
+      const base = import.meta.env.VITE_QUOTES_API; // includes /prod
+      const url = new URL(`${base}/quote`);
+      if (category) url.searchParams.set("category", category);
 
-    if (errors?.length) {
-      console.error(errors);
+      const res = await fetch(url.toString());
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error(`HTTP ${res.status}: ${txt}`);
+      }
+
+      const data = await res.json();
+      setQuote({
+        text: data.text,
+        author: data.author || "Unknown",
+        category: data.category || "",
+      });
+    } catch (e) {
+      console.error("API error:", e);
       setQuote({ text: "Failed to load quotes.", author: "" });
+    } finally {
       setLoading(false);
-      return;
     }
-
-    const items = data ?? [];
-    if (!items.length) {
-      setQuote({ text: "No quotes yet. Add some to DynamoDB!", author: "" });
-      setLoading(false);
-      return;
-    }
-
-    const pick = items[Math.floor(Math.random() * items.length)];
-    setQuote({ text: pick.text, author: pick.author || "Unknown", category: pick.category || "" });
-    setLoading(false);
   }
+
+
 
   useEffect(() => {
     loadRandomQuote();

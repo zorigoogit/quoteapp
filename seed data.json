@@ -1,0 +1,46 @@
+[
+  {
+    "id": { "S": "q1" },
+    "text": { "S": "Life is like riding a bicycle. To keep your balance, you must keep moving." },
+    "author": { "S": "Albert Einstein" },
+    "category": { "S": "Life" },
+    "createdAt": { "S": "2025-12-23T11:30:00.000Z" },
+    "updatedAt": { "S": "2025-12-23T11:30:00.000Z" }
+  }
+  ,
+  {
+    "id": { "S": "q2" },
+    "text": { "S": "The only way to do great work is to love what you do." },
+    "author": { "S": "Steve Jobs" },
+    "category": { "S": "Work" },
+    "createdAt": { "S": "2025-12-23T11:30:00.000Z" },
+    "updatedAt": { "S": "2025-12-23T11:30:00.000Z" }
+  }
+  ,
+  {
+    "id": { "S": "q3" },
+    "text": { "S": "It always seems impossible until it is done." },
+    "author": { "S": "Nelson Mandela" },
+    "category": { "S": "Motivation" },
+    "createdAt": { "S": "2025-12-23T11:30:00.000Z" },
+    "updatedAt": { "S": "2025-12-23T11:30:00.000Z" }
+  }
+  ,
+  {
+    "id": { "S": "q4" },
+    "text": { "S": "The journey of a thousand miles begins with one step." },
+    "author": { "S": "Lao Tzu" },
+    "category": { "S": "Journey" },
+    "createdAt": { "S": "2025-12-23T11:30:00.000Z" },
+    "updatedAt": { "S": "2025-12-23T11:30:00.000Z" }
+  }
+  ,
+  {
+    "id": { "S": "q5" },
+    "text": { "S": "It does not matter how slowly you go as long as you do not stop." },
+    "author": { "S": "Confucius" },
+    "category": { "S": "Perseverance" },
+    "createdAt": { "S": "2025-12-23T11:30:00.000Z" },
+    "updatedAt": { "S": "2025-12-23T11:30:00.000Z" }
+  }
+]
