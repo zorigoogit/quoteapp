@@ -38,7 +38,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const base = import.meta.env.VITE_QUOTES_API; // includes /prod
+      const base = import.meta.env.VITE_QUOTES_API;
       const url = new URL(`${base}/quote`);
       if (category) url.searchParams.set("category", category);
 
@@ -61,8 +61,6 @@ export default function App() {
       setLoading(false);
     }
   }
-
-
 
   useEffect(() => {
     loadRandomQuote();
