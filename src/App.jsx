@@ -39,25 +39,38 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ maxWidth: 720, margin: "40px auto", padding: 16 }}>
-      <h1>Daily Quote App</h1>
+    <div className="app">
+      <div className="main">
+        <div className="card">
+          <div className="quoteMark">“</div>
 
-      <div style={{ padding: 16, border: "1px solid #ddd", borderRadius: 12, marginTop: 16 }}>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <p style={{ fontSize: 22, lineHeight: 1.4 }}>"{quote?.text}"</p>
-            <p style={{ opacity: 0.8, marginTop: 8 }}>
-              — {quote?.author} {quote?.category ? `(${quote.category})` : ""}
-            </p>
-          </>
-        )}
+          <div className="quoteText">
+            {loading ? "Loading..." : quote?.text}
+          </div>
+
+          <div className="author">
+            {quote?.author ? `${quote.author} -` : ""}
+          </div>
+
+          <div className="actions">
+            <button className="btn" onClick={() => loadRandomQuote()}>
+              New Quote
+            </button>
+          </div>
+        </div>
       </div>
 
-      <button onClick={() => loadRandomQuote()} style={{ marginTop: 16, padding: "10px 14px" }}>
-        New Quote
-      </button>
+      <div className="footer">
+        <div className="footerLeft">
+          <div>Sydney Polytechnic Institute</div>
+          <div>Master of Data Science</div>
+        </div>
+
+        <div className="footerRight" style={{ textAlign: "right" }}>
+          <div>MDS615 - Cloud Computing and Application Development</div>
+          <div>StudentID: SPI240562</div>
+        </div>
+      </div>
     </div>
   );
 }
