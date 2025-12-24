@@ -82,7 +82,7 @@ export default function App() {
 
           <div className="actions">
             <button className="btn" onClick={() => loadRandomQuote()}>
-              New Quote
+              Get Quote
             </button>
           </div>
         </div>
