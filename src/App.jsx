@@ -77,7 +77,7 @@ export default function App() {
           </div>
 
           <div className="author">
-            {quote?.author ? `${quote.author} -` : ""}
+            {quote?.author ? `${quote.author}` : ""}
           </div>
 
           <div className="actions">
